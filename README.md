@@ -1,2 +1,1 @@
-# Problem-Solving-C-
-DSA problems with solutions
+This Repository Contains Leetcode Solutions of DSA problems in C++ language
