@@ -1,6 +1,5 @@
 //  Link: https://leetcode.com/problems/average-of-levels-in-binary-tree/
 
-
 class Solution {
 public:
     vector<double> averageOfLevels(TreeNode* root){
