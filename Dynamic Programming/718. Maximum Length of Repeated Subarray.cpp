@@ -1,5 +1,6 @@
-class Solution{
+// Link:    https://leetcode.com/problems/maximum-length-of-repeated-subarray/
 
+class Solution{
 //   DP: if two characters are equal then they largest common length will be 1 more than the result in the diagonal
 
 public:
