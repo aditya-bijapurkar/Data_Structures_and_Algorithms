@@ -2,12 +2,15 @@
 
 class Solution {
 private:
-    map<int,vector<pair<int,int>>> mp;   // horizontal level, <data, vertical level>
+    unordered_map<int,vector<pair<int,int>>> ump;   // horizontal level, <data, vertical level>
+    int leftmost=0, rightmost=0;
     
     void solve(TreeNode *root, int hor, int ver){
         if(!root)
             return;
-        mp[hor].push_back(make_pair(root->val,ver));
+        ump[hor].push_back(make_pair(root->val,ver));
+        if(hor<leftmost) leftmost=hor;
+        if(hor>rightmost) rightmost=hor;
         
         solve(root->left,hor-1,ver+1);
         solve(root->right,hor+1,ver+1);
@@ -19,8 +22,8 @@ public:
         
         solve(root,0,0);
         
-        for(auto i:mp){
-            vector<pair<int,int>> temp=i.second;
+        for(int i=leftmost;i<=rightmost;i++){
+            vector<pair<int,int>> temp=ump[i];
             sort(temp.begin(),temp.end(),[](auto &a, auto &b){
                 if(a.second==b.second)
                     return a.first<b.first;
@@ -28,8 +31,8 @@ public:
             });
                 
             vector<int> res;
-            for(auto i:temp){
-                res.push_back(i.first);
+            for(auto j:temp){
+                res.push_back(j.first);
             }
             ans.push_back(res);
         }
